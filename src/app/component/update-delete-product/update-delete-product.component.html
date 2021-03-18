@@ -1,0 +1,24 @@
+<p>update-delete-product works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>product id</th>
+            <th>product name</th>
+            <th>product quantity</th>
+            <th>product price</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.product_name}}</td>
+            <td>{{product.product_quantity}}</td>
+            <td>{{product.product_price}}</td>
+            <td><button (click)="updateProduct()">update</button></td>
+            <td><button (click)="deleteProduct()">delete</button></td>
+        </tr>
+    </tbody>
+</table>
