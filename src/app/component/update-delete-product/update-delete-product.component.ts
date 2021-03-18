@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductserviceService } from 'src/app/service/productservice.service';
 
 @Component({
   selector: 'app-update-delete-product',
@@ -7,28 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateDeleteProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productservice: ProductserviceService) { }
 
-  products=[
-    {id:1, product_name: "product 1", product_quantity: "quantity 1", product_price: "price 1"},
-    {id:2, product_name: "product 2", product_quantity: "quantity 2", product_price: "price 2"},
-    {id:3, product_name: "product 3", product_quantity: "quantity 3", product_price: "price 3"},
-    {id:4, product_name: "product 4", product_quantity: "quantity 4", product_price: "price 4"},
-    {id:5, product_name: "product 5", product_quantity: "quantity 5", product_price: "price 5"},
-    {id:6, product_name: "product 6", product_quantity: "quantity 6", product_price: "price 6"},
-    {id:7, product_name: "product 7", product_quantity: "quantity 7", product_price: "price 7"},
-    {id:8, product_name: "product 8", product_quantity: "quantity 8", product_price: "price 8"}
-  ]
+  products=[];
 
-  deleteProduct(){
-    console.log("delete cliked")
+
+  deleteProduct(id:number){
+    let index:number = this.productservice.product_list.findIndex((item)=> item.id == id)
+    this.productservice.product_list.splice(index,1);
   }
 
-  updateProduct(){
-    console.log("update clicked")
+  updateProduct(id:number){
+    let product = this.productservice.product_list
+    let index:number = product.findIndex((item)=> item.id == id)
+    this.productservice.emitupdatedata<{}>({"id":product[index].id, "product_name":product[index].product_name, "product_quantity":product[index].product_quantity, "product_price":product[index].product_price})
+    
   }
 
   ngOnInit(): void {
+    this.products = this.productservice.getProductlist();
   }
 
 }

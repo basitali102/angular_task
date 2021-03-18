@@ -17,8 +17,8 @@
             <td>{{product.product_name}}</td>
             <td>{{product.product_quantity}}</td>
             <td>{{product.product_price}}</td>
-            <td><button (click)="updateProduct()">update</button></td>
-            <td><button (click)="deleteProduct()">delete</button></td>
+            <td><button (click)="updateProduct(product.id)">update</button></td>
+            <td><button (click)="deleteProduct(product.id)">delete</button></td>
         </tr>
     </tbody>
 </table>
