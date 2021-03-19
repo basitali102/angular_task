@@ -1,12 +1,26 @@
-<p>addproduct works!</p>
-
-
-<h2>Add Product</h2>
-<form>
-    <label>Product ID: </label> <input type="number" [(ngModel)]="id"  name="id" required/> <br/>
-    <label>Product Name: </label><input type="text" [(ngModel)] = "product_name" name="product_name" required/> <br/>
-    <label>Product Quantity: </label> <input type="text" [(ngModel)] ="product_quantity" name="product_quantity" required/> <br/>
-    <label>Product Price: </label> <input type="text" [(ngModel)] = "product_price" name="product_price" required/> <br/>
-    <button (click)="AddProduct()">Add Product</button>
-</form>
+<div class="form_container">
+    <h2>Add Product</h2>
+    <form>
+        <div class="row">
+            <div class="col">
+                <label>Product ID: </label> <input type="number" [(ngModel)]="id"  name="id" class="form-control" required minlength="1"/>
+            </div>
+            <div class="col">
+                <label>Product Name: </label><input type="text" [(ngModel)] = "product_name" name="product_name" class="form-control" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Product Quantity: </label> <input type="text" [(ngModel)] ="product_quantity" name="product_quantity" class="form-control" required/> 
+            </div>
+            <div class="col">
+                <label>Product Price: </label> <input type="text" [(ngModel)] = "product_price" name="product_price" class="form-control" required/> 
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" (click)="AddProduct()">Add Product</button>
+        </div>
+        
+    </form>
+</div>
 <hr/>
